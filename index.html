@@ -6,67 +6,82 @@
     <title>하루일기</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <img src="icon.png" alt="">
         <h1>하루일기</h1>
     </header>
-    <section class="main">
-        <section>
-            <div class="yearmonth">
-                <button class="moveto"><i class="fas fa-caret-left"></i></button>
-                <span class="year">2021</span>
-                <span class="month">1</span>
-                <button class="moveto"><i class="fas fa-caret-right"></i></button>
+    <section class="container">
+        <section class="section--left">
+            <div class="calendar">
+
+                <div class="yearmonth">
+                    <button class="moveto lastmonth"><i class="fas fa-caret-left"></i></button>
+                    <span class="year">2021년</span>
+                    <span class="month">1월</span>
+                    <button class="moveto nextmonth"><i class="fas fa-caret-right"></i></button>
+                </div>
+                <table class="date">
+                    <tr>
+                        <td style="color: red;">일</td>
+                        <td>월</td>
+                        <td>화</td>
+                        <td>수</td>
+                        <td>목</td>
+                        <td>금</td>
+                        <td>토</td>
+                    </tr>
+                    <tr>
+                        <td></td> <td></td> <td></td> <td></td> <td></td> <td>1</td> <td>2</td>  
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #c3cfdb; border-radius: 50%;">3</td> <td>4</td> <td>5</td> <td>6</td> <td>7</td> <td>8</td> <td>9</td>  
+                    </tr>
+                    <tr>
+                        <td>10</td> <td>11</td> <td>12</td> <td>13</td> <td>14</td> <td>15</td> <td>16</td>  
+                    </tr>
+                    <tr>
+                        <td>17</td> <td>18</td> <td>19</td> <td>20</td> <td>21</td> <td>22</td> <td>23</td>  
+                    </tr>
+                    <tr>
+                        <td>24</td> <td>25</td> <td>26</td> <td>27</td> <td>28</td> <td>29</td> <td>30</td>  
+                    </tr>
+                    <tr>
+                        <td>31</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>  
+                    </tr>
+                </table>
             </div>
-            <table id="calendar">
-                <!-- <tr>
-                    <th class="moveto lastmonth"><i class="fas fa-caret-left"></i></th>
-                    <th class="year">2021/1</th>
-                    <th class="moveto nextmonth"><i class="fas fa-caret-right"></i></th>
-                </tr> -->
-                <tr>
-                    <td>일</td>
-                    <td>월</td>
-                    <td>화</td>
-                    <td>수</td>
-                    <td>목</td>
-                    <td>금</td>
-                    <td>토</td>
-                </tr>
-                <tr>
-                    <td></td> <td></td> <td></td> <td></td> <td></td> <td>1</td> <td>2</td>  
-                </tr>
-                <tr>
-                    <td>3</td> <td>4</td> <td>5</td> <td>6</td> <td>7</td> <td>8</td> <td>9</td>  
-                </tr>
-                <tr>
-                    <td>10</td> <td>11</td> <td>12</td> <td>13</td> <td>14</td> <td>15</td> <td>16</td>  
-                </tr>
-                <tr>
-                    <td>17</td> <td>18</td> <td>19</td> <td>20</td> <td>21</td> <td>22</td> <td>23</td>  
-                </tr>
-                <tr>
-                    <td>24</td> <td>25</td> <td>26</td> <td>27</td> <td>28</td> <td>29</td> <td>30</td>  
-                </tr>
-                <tr>
-                    <td>31</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>  
-                </tr>
-            </table>
+            <div class="diary--list">
+                <button class="add-diary"><i class="fas fa-plus"></i></button>
+                <span>New Diary</span>
+                <ul class="diarys">
+                    <li class="diary">
+                        <span class="diary--title">title</span>
+                        <button class="delete-diary"><i class="fas fa-trash-alt"></i></button>
+                    </li>
+                    <li class="diary">
+                        <span class="diary--title">title</span>
+                        <button class="delete-diary"><i class="fas fa-trash-alt"></i></button>
+                    </li>
+                </ul>
+            </div>
         </section>
-        <section>
-            <ul class="diarys">
-                <li class="diary">
-                    <span class="diary--title">title</span>
-                    <button class="delete-diary"><i class="fas fa-trash-alt"></i></button>
-                </li>
-                <li class="diary">
-                    <span class="diary--title">title</span>
-                    <button class="delete-diary"><i class="fas fa-trash-alt"></i></button>
-                </li>
-            </ul>
-            <button class="add-diary"><i class="fas fa-plus"></i></button>
+        <!-- <div class="clear"></div> -->
+        <section class="section--right">
+            <div class="main--data">
+                <h1>Title</h1>
+                <div class="btns">
+                    <button class="btn--edit">수정</button>
+                    <button class="btn--delete">삭제</button>
+                </div>
+            </div>
+            <div class="main--content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis dicta id, odio voluptate enim quos corporis nostrum ullam numquam illum mollitia. Saepe praesentium quos minus, nostrum pariatur exercitationem cupiditate ducimus?</p>
+            </div>
         </section>
     </section>
 </body>
