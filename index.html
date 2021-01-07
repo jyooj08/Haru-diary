@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하루일기</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+</head>
+<body>
+    <header class="title">
+        <img src="icon.png" alt="">
+        <h1>하루일기</h1>
+    </header>
+    <section class="main">
+        <section>
+            <table id="calendar"></table>
+            <tr>
+                <td class="moveto lastmonth"><i class="fas fa-caret-left"></i></td>
+                <td class="year"></td>
+                <td class="month"></td>
+                <td class="moveto nextmonth"><i class="fas fa-caret-right"></i></td>
+            </tr>
+            <tr>
+                <td>일</td>
+                <td>월</td>
+                <td>화</td>
+                <td>수</td>
+                <td>목</td>
+                <td>금</td>
+                <td>토</td>
+            </tr>
+        </section>
+        <section>
+            <ul class="diarys">
+                <li class="diary">
+                    <span class="diary--title">title</span>
+                    <button class="delete-diary"><i class="fas fa-trash-alt"></i></button>
+                </li>
+                <li class="diary">
+                    <span class="diary--title">title</span>
+                    <button class="delete-diary"><i class="fas fa-trash-alt"></i></button>
+                </li>
+            </ul>
+            <button class="add-diary"><i class="fas fa-plus"></i></button>
+        </section>
+    </section>
+</body>
+</html>
