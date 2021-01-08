@@ -1,5 +1,6 @@
 :root{
     --main-color: #c3cfdb;
+    --border-rad: 4px;
 }
 
 /* Common tags */
@@ -24,6 +25,7 @@ ul, li{
 
 input, textarea{
     border: 2px solid var(--main-color);
+    border-radius: var(--border-rad);
     outline: none;
 }
 
@@ -70,6 +72,7 @@ header img{
     margin: 40px 20px;
     background-color: white;
     border: 2px solid var(--main-color);
+    border-radius: var(--border-rad);
 }
 .section--write{
     width: 100%;
@@ -85,10 +88,10 @@ header img{
     padding: 20px;
     margin-bottom: 30px;
     border: 2px solid var(--main-color);
-    border-radius: 20px;
     text-align: center;
     display: inline-block;
     background-color: white;
+    border-radius: var(--border-rad);
 }
 
 .yearmonth{
