@@ -6,6 +6,7 @@ var monthSpan = document.querySelector('.month');
 var table = document.querySelector('.date');
 var toLastMonth = document.querySelector('.moveto.lastmonth');
 var toNextMonth = document.querySelector('.moveto.nextmonth');
+var addDiaryBtn = document.querySelector('.add-diary');
 setCalendar(year, month);
 function setCalendar(year, month) {
     yearSpan.textContent = String(year) + "년";
@@ -67,8 +68,14 @@ table.addEventListener('click', function (event) {
     var target = event.target;
     if (!target.id)
         return;
-    var date = target.id.substring(1).split('-');
+    var date = target.id.substring(1); //.split('-');
     console.log(date);
     console.log(target);
     target.style.border = '2px solid #c3cfdb';
+    console.log('get?date=' + date);
+    window.location.href = "get?date=" + date;
+});
+addDiaryBtn.addEventListener('click', function () {
+    console.log('click');
+    window.location.href = 'writeDiary';
 });

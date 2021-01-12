@@ -7,6 +7,7 @@ let monthSpan = document.querySelector('.month');
 let table = document.querySelector('.date');
 let toLastMonth = document.querySelector('.moveto.lastmonth');
 let toNextMonth = document.querySelector('.moveto.nextmonth');
+let addDiaryBtn = document.querySelector('.add-diary');
 
 setCalendar(year, month);
 
@@ -71,8 +72,15 @@ toNextMonth.addEventListener('click', ()=>{
 table.addEventListener('click', (event)=>{
     let target:HTMLElement = event.target as HTMLElement;
     if(!target.id) return;
-    let date: Array<string> = target.id.substring(1).split('-');
+    let date: string = target.id.substring(1);//.split('-');
     console.log(date);
     console.log(target);
     target.style.border = '2px solid #c3cfdb';
+    console.log('get?date='+date);
+    window.location.href="get?date="+date;
 });
+
+addDiaryBtn.addEventListener('click', ()=>{
+    console.log('click');
+    window.location.href='writeDiary';
+})

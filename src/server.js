@@ -9,6 +9,12 @@ app.get('/', (request, response) => {
 
 app.get('/writeDiary', (request, response)=> {
     response.sendFile(path.normalize(__dirname+'/../writeDiary.html'));
+    console.log('write diary request');
+})
+
+app.get('/get', (request, response)=>{
+    console.log(request.query);
+    response.send('response of '+request.query.date);
 })
 
 app.listen(50000, () => {
