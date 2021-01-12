@@ -8,6 +8,12 @@ let table = document.querySelector('.date');
 let toLastMonth = document.querySelector('.moveto.lastmonth');
 let toNextMonth = document.querySelector('.moveto.nextmonth');
 let addDiaryBtn = document.querySelector('.add-diary');
+let query: Array<string> = window.location.search.substring(1).split('&');
+let data: Array<string> = [];
+
+query.forEach(item => {
+    data[item.split('=')[0]] = item.split('=')[1];
+});
 
 setCalendar(year, month);
 
@@ -38,7 +44,7 @@ function setCalendar(year: number, month: number): void{
             let td: HTMLElement = document.createElement('td');
             if(typeof(week[i])=='number') {
                 td.textContent = String(week[i]);
-                td.setAttribute('id', `d${year}-${month}-${week[i]}`);
+                td.setAttribute('id', `date${year}-${month}-${week[i]}`);
                 if(i==0) td.style.color = 'red';
             } else{
                 td.style.pointerEvents = 'none';
@@ -48,9 +54,12 @@ function setCalendar(year: number, month: number): void{
         table.append(tr);
     });
 
-    let now: HTMLElement = document.querySelector(`#d${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`);
-    now.style.backgroundColor = '#c3cfdb';
-    now.style.borderRadius = '50%';
+    let now: HTMLElement = document.querySelector('#date'+data['date']) || document.querySelector(`#date${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`);
+    if(now){
+        now.style.backgroundColor = '#c3cfdb';
+        now.style.borderRadius = '50%';
+    }
+    
 }
 
 toLastMonth.addEventListener('click', ()=>{
@@ -72,12 +81,8 @@ toNextMonth.addEventListener('click', ()=>{
 table.addEventListener('click', (event)=>{
     let target:HTMLElement = event.target as HTMLElement;
     if(!target.id) return;
-    let date: string = target.id.substring(1);//.split('-');
-    console.log(date);
-    console.log(target);
-    target.style.border = '2px solid #c3cfdb';
-    console.log('get?date='+date);
-    window.location.href="get?date="+date;
+    let date: string = target.id.substring(4);
+    window.location.href="/?date="+date;
 });
 
 addDiaryBtn.addEventListener('click', ()=>{

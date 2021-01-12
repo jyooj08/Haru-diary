@@ -7,6 +7,11 @@ var table = document.querySelector('.date');
 var toLastMonth = document.querySelector('.moveto.lastmonth');
 var toNextMonth = document.querySelector('.moveto.nextmonth');
 var addDiaryBtn = document.querySelector('.add-diary');
+var query = window.location.search.substring(1).split('&');
+var data = [];
+query.forEach(function (item) {
+    data[item.split('=')[0]] = item.split('=')[1];
+});
 setCalendar(year, month);
 function setCalendar(year, month) {
     yearSpan.textContent = String(year) + "년";
@@ -33,7 +38,7 @@ function setCalendar(year, month) {
             var td = document.createElement('td');
             if (typeof (week[i]) == 'number') {
                 td.textContent = String(week[i]);
-                td.setAttribute('id', "d" + year + "-" + month + "-" + week[i]);
+                td.setAttribute('id', "date" + year + "-" + month + "-" + week[i]);
                 if (i == 0)
                     td.style.color = 'red';
             }
@@ -44,9 +49,11 @@ function setCalendar(year, month) {
         }
         table.append(tr);
     });
-    var now = document.querySelector("#d" + today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate());
-    now.style.backgroundColor = '#c3cfdb';
-    now.style.borderRadius = '50%';
+    var now = document.querySelector('#date' + data['date']) || document.querySelector("#date" + today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate());
+    if (now) {
+        now.style.backgroundColor = '#c3cfdb';
+        now.style.borderRadius = '50%';
+    }
 }
 toLastMonth.addEventListener('click', function () {
     month--;
@@ -68,12 +75,8 @@ table.addEventListener('click', function (event) {
     var target = event.target;
     if (!target.id)
         return;
-    var date = target.id.substring(1); //.split('-');
-    console.log(date);
-    console.log(target);
-    target.style.border = '2px solid #c3cfdb';
-    console.log('get?date=' + date);
-    window.location.href = "get?date=" + date;
+    var date = target.id.substring(4);
+    window.location.href = "/?date=" + date;
 });
 addDiaryBtn.addEventListener('click', function () {
     console.log('click');
