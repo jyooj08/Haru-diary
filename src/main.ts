@@ -73,4 +73,6 @@ table.addEventListener('click', (event)=>{
     if(!target.id) return;
     let date: Array<string> = target.id.substring(1).split('-');
     console.log(date);
+    console.log(target);
+    target.style.border = '2px solid #c3cfdb';
 });

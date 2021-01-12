@@ -104,6 +104,7 @@ header img{
 .date td{
     padding: 3px;
     cursor: pointer;
+    border-radius: 50%;
 }
 
 /* diarys */
