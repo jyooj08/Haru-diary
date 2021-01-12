@@ -49,11 +49,12 @@ function setCalendar(year, month) {
         }
         table.append(tr);
     });
-    var now = document.querySelector('#date' + data['date']) || document.querySelector("#date" + today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate());
-    if (now) {
-        now.style.backgroundColor = '#c3cfdb';
-        now.style.borderRadius = '50%';
-    }
+    var todayDate = document.querySelector("#date" + today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate());
+    if (todayDate)
+        todayDate.style.backgroundColor = '#c3cfdb';
+    var nowDate = document.querySelector('#date' + data['date']);
+    if (nowDate)
+        nowDate.style.border = '2px solid #c3cfdb';
 }
 toLastMonth.addEventListener('click', function () {
     month--;

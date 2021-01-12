@@ -7,15 +7,10 @@ const fs = require('fs');
 app.use(express.static(path.normalize(__dirname+'/..')));
 
 app.get('/', (request, response) => {
-    let now = new Date();
     fs.readFile(path.normalize(__dirname+'/../index.ejs'), 'utf8', function(error, data){
-        response.send(ejs.render(data, {
-            year: now.getFullYear(),
-            month: now.getMonth(),
-            date: now.getDate()
-        }));
+        response.send(ejs.render(data));
     });
-    console.log('ejs');
+    console.log(request.query.date);
 });
 
 app.get('/writeDiary', (request, response)=> {

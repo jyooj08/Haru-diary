@@ -54,11 +54,11 @@ function setCalendar(year: number, month: number): void{
         table.append(tr);
     });
 
-    let now: HTMLElement = document.querySelector('#date'+data['date']) || document.querySelector(`#date${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`);
-    if(now){
-        now.style.backgroundColor = '#c3cfdb';
-        now.style.borderRadius = '50%';
-    }
+    let todayDate: HTMLElement = document.querySelector(`#date${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`);
+    if(todayDate) todayDate.style.backgroundColor = '#c3cfdb';
+    let nowDate: HTMLElement = document.querySelector('#date'+data['date']);
+    if(nowDate) nowDate.style.border = '2px solid #c3cfdb';
+    
     
 }
 
