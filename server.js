@@ -4,17 +4,18 @@ const path = require('path');
 const ejs = require('ejs');
 const fs = require('fs');
 
-app.use(express.static(path.normalize(__dirname+'/..')));
+app.use(express.static(path.normalize(__dirname)));
 
 app.get('/', (request, response) => {
-    fs.readFile(path.normalize(__dirname+'/../index.ejs'), 'utf8', function(error, data){
+    console.log('test', path.normalize(__dirname+'/html/index.ejs'));
+    fs.readFile(path.normalize(__dirname+'/html/index.ejs'), 'utf8', function(error, data){
         response.send(ejs.render(data));
     });
     console.log(request.query.date);
 });
 
 app.get('/writeDiary', (request, response)=> {
-    response.sendFile(path.normalize(__dirname+'/../writeDiary.html'));
+    response.sendFile(path.normalize(__dirname+'/html/writeDiary.html'));
     console.log('write diary request');
 })
 
