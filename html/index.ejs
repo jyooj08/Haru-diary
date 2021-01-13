@@ -35,29 +35,32 @@
                 <!-- </a> -->
                 <span>New Diary</span>
                 <ul class="diarys">
-                    <li class="diary">
-                        <span class="diary--title">title</span>
-                        <button class="delete-diary"><i class="fas fa-trash-alt"></i></button>
-                    </li>
-                    <li class="diary">
-                        <span class="diary--title">title</span>
-                        <button class="delete-diary"><i class="fas fa-trash-alt"></i></button>
-                    </li>
+                    <% diarys.forEach(function(diary, index){ %>
+                        <li class="diary">
+                            <span class="diary--title"><%= diary.title %></span>
+                            <button class="delete-diary"><i class="fas fa-trash-alt"></i></button>
+                        </li>
+                    <% })%>
                 </ul>
             </div>
         </section>
         <!-- <div class="clear"></div> -->
         <section class="section--right">
+            <% if(diarys.length == 0) { %>
+                <h1>작성된 일기가 없습니다.</h1>
+            <% } else {%>
             <div class="main--data">
-                <h1>Title</h1>
+                <h1><%= diarys[0].title %></h1>
                 <div class="main btns">
                     <button class="btn--edit">수정</button>
                     <button class="btn--delete">삭제</button>
                 </div>
             </div>
             <div class="main--content">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis dicta id, odio voluptate enim quos corporis nostrum ullam numquam illum mollitia. Saepe praesentium quos minus, nostrum pariatur exercitationem cupiditate ducimus?</p>
+                <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis dicta id, odio voluptate enim quos corporis nostrum ullam numquam illum mollitia. Saepe praesentium quos minus, nostrum pariatur exercitationem cupiditate ducimus?</p> -->
+                <%= diarys[0].content %>
             </div>
+            <% } %>
         </section>
     </section>
 </body>
