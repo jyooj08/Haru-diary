@@ -108,6 +108,12 @@ header img{
     border-radius: 50%;
     border: 2px solid transparent;
 }
+.date td.today{
+    background-color: var(--main-color);
+}
+.date td.now{
+    border: 2px solid var(--main-color);
+}
 
 /* diarys */
 .add-diary{

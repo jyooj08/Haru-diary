@@ -15,8 +15,8 @@
         <h1>하루일기</h1>
     </header>
     <section class="section--write">
-        <input class="input--title" type="text" placeholder="제목" value="editDiary">
-        <textarea class="content" name="" id="" cols="30" rows="10"></textarea>
+        <input class="input--title" type="text" placeholder="제목" value="<%=diary.title%>">
+        <textarea class="content" name="" id="" cols="30" rows="10"><%=diary.content%></textarea>
         <div class="write btns">
             <button class="btn--save">저장</button>
             <button class="btn--delete">삭제</button>

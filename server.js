@@ -25,11 +25,6 @@ app.get('/', (request, response) => {
     }
     console.log('query: ', request.query);
 
-    // connection.query(`select * from test`, function(error, results, fields){
-    //     if(error) console.log('ERROR', error);
-    //     console.log(results);
-    // });
-
     connection.query(`select * from diary where date='${date}'`, function(error, results, fields){
         if(error) console.log('ERROR', error);
         // console.log(results);
@@ -41,16 +36,22 @@ app.get('/', (request, response) => {
 });
 
 app.get('/writeDiary', (request, response)=> {
-    response.sendFile(path.normalize(__dirname+'/html/writeDiary.html'));
-    console.log('write diary request');
-})
-
-app.get('/get', (request, response)=>{
-    console.log(request.query);
-    response.send('response of '+request.query.date);
-})
+    let date = request.query.date || '';
+    let no = request.query.no || '';
+    connection.query(`select * from diary where date='${date}' and no=${no}`, function(error, results, fields){
+        if(error) console.log('ERROR', error);
+        if(!results[0]) results[0]={
+            no: no,
+            date: date,
+            title: '',
+            content: ''
+        }
+        fs.readFile(path.normalize(__dirname+'/html/writeDiary.ejs'), 'utf8', function(error, data){
+            response.send(ejs.render(data, {diary: results[0]}));
+        });
+    });
+});
 
 app.listen(50000, () => {
     console.log('Server running in 50000 port');
-    console.log(__dirname);
 });

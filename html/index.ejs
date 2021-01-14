@@ -37,7 +37,7 @@
                 <ul class="diarys">
                     <% diarys.forEach(function(diary, index){ %>
                         <li class="diary <%=index%>">
-                            <a class="diary--title" href="http://localhost:50000/?date=<%=diary.date%>&idx=<%=diary.no%>"><%= diary.title %></a>
+                            <a class="diary--title" href="/?date=<%=diary.date%>&idx=<%=diary.no%>"><%= diary.title %></a>
                             <button class="delete-diary"><i class="fas fa-trash-alt"></i></button>
                         </li>
                     <% })%>
@@ -49,7 +49,7 @@
             <% if(diarys.length == 0) { %>
                 <h1>작성된 일기가 없습니다.</h1>
             <% } else {%>
-            <div class="main--data">
+            <div class="main--data" data-date="<%=diarys[idx].date%>" data-no="<%=idx%>">
                 <h1><%= diarys[idx].title %></h1>
                 <div class="main btns">
                     <button class="btn--edit">수정</button>

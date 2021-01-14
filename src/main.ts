@@ -8,6 +8,7 @@ let table = document.querySelector('.date');
 let toLastMonth = document.querySelector('.moveto.lastmonth');
 let toNextMonth = document.querySelector('.moveto.nextmonth');
 let addDiaryBtn = document.querySelector('.add-diary');
+let editBtn = document.querySelector('.btn--edit');
 let query: Array<string> = window.location.search.substring(1).split('&');
 let data: Array<string> = [];
 
@@ -55,9 +56,9 @@ function setCalendar(year: number, month: number): void{
     });
 
     let todayDate: HTMLElement = document.querySelector(`#date${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`);
-    if(todayDate) todayDate.style.backgroundColor = '#c3cfdb';
+    if(todayDate) todayDate.classList.add('today');
     let nowDate: HTMLElement = document.querySelector('#date'+data['date']);
-    if(nowDate) nowDate.style.border = '2px solid #c3cfdb';
+    if(nowDate) nowDate.classList.add('now');
     
     
 }
@@ -86,6 +87,14 @@ table.addEventListener('click', (event)=>{
 });
 
 addDiaryBtn.addEventListener('click', ()=>{
-    console.log('click');
-    window.location.href='writeDiary';
-})
+    let date:string = document.querySelector('.date td.today').id.substring(4);
+    let no: number = document.querySelectorAll('.diarys li').length;
+    window.location.href="/writeDiary?date="+date+"&no="+no;
+});
+
+editBtn.addEventListener('click', ()=>{
+    let maindata:HTMLElement = document.querySelector('.main--data');
+    let date:string = maindata.dataset.date;
+    let no:string = maindata.dataset.no;
+    window.location.href="/writeDiary?date="+date+"&no="+no;
+});

@@ -7,6 +7,7 @@ var table = document.querySelector('.date');
 var toLastMonth = document.querySelector('.moveto.lastmonth');
 var toNextMonth = document.querySelector('.moveto.nextmonth');
 var addDiaryBtn = document.querySelector('.add-diary');
+var editBtn = document.querySelector('.btn--edit');
 var query = window.location.search.substring(1).split('&');
 var data = [];
 query.forEach(function (item) {
@@ -51,10 +52,10 @@ function setCalendar(year, month) {
     });
     var todayDate = document.querySelector("#date" + today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate());
     if (todayDate)
-        todayDate.style.backgroundColor = '#c3cfdb';
+        todayDate.classList.add('today');
     var nowDate = document.querySelector('#date' + data['date']);
     if (nowDate)
-        nowDate.style.border = '2px solid #c3cfdb';
+        nowDate.classList.add('now');
 }
 toLastMonth.addEventListener('click', function () {
     month--;
@@ -80,6 +81,13 @@ table.addEventListener('click', function (event) {
     window.location.href = "/?date=" + date;
 });
 addDiaryBtn.addEventListener('click', function () {
-    console.log('click');
-    window.location.href = 'writeDiary';
+    var date = document.querySelector('.date td.today').id.substring(4);
+    var no = document.querySelectorAll('.diarys li').length;
+    window.location.href = "/writeDiary?date=" + date + "&no=" + no;
+});
+editBtn.addEventListener('click', function () {
+    var maindata = document.querySelector('.main--data');
+    var date = maindata.dataset.date;
+    var no = maindata.dataset.no;
+    window.location.href = "/writeDiary?date=" + date + "&no=" + no;
 });
