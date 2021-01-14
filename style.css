@@ -142,6 +142,8 @@ header img{
 }
 
 .diary--title{
+    text-decoration: none;
+    color: black;
     cursor: pointer;
     transition: all 300ms ease-in-out;
 }

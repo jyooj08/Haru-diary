@@ -16,22 +16,27 @@ connection.connect();
 
 app.get('/', (request, response) => {
     let date = request.query.date;
-    let index = Number(request.query.index) || 0;
+    let idx = Number(request.query.idx) || 0;
     if(!date){
         let today = new Date();
         let month = Number(today.getMonth()) + 1;
         if(month > 12) month = 1;
         date = today.getFullYear() + '-' + month + '-' + today.getDate();
     }
-    console.log('query: ', date, index);
+    console.log('query: ', request.query);
+
+    // connection.query(`select * from test`, function(error, results, fields){
+    //     if(error) console.log('ERROR', error);
+    //     console.log(results);
+    // });
 
     connection.query(`select * from diary where date='${date}'`, function(error, results, fields){
         if(error) console.log('ERROR', error);
-        console.log(results);
+        // console.log(results);
         fs.readFile(path.normalize(__dirname+'/html/index.ejs'), 'utf8', function(error, data){
-            response.send(ejs.render(data, {diarys: results}));
+            response.send(ejs.render(data, {diarys: results, idx: idx}));
         });
-    })
+    });
     
 });
 
