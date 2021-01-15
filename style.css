@@ -159,6 +159,7 @@ header img{
 
 .delete-diary{
     transition: all 300ms ease-in-out;
+    cursor: pointer;
 }
 .delete-diary:hover{
     color: red;

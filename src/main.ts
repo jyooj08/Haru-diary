@@ -9,6 +9,10 @@ let toLastMonth = document.querySelector('.moveto.lastmonth');
 let toNextMonth = document.querySelector('.moveto.nextmonth');
 let addDiaryBtn = document.querySelector('.add-diary');
 let editBtn = document.querySelector('.btn--edit');
+let deleteBtn = document.querySelector('.btn--delete');
+let saveBtn = document.querySelector('.btn--save');
+let maindata:HTMLElement = document.querySelector('.main--data');
+let diaryList:HTMLElement = document.querySelector('.diarys');
 let query: Array<string> = window.location.search.substring(1).split('&');
 let data: Array<string> = [];
 
@@ -93,8 +97,21 @@ addDiaryBtn.addEventListener('click', ()=>{
 });
 
 editBtn.addEventListener('click', ()=>{
-    let maindata:HTMLElement = document.querySelector('.main--data');
     let date:string = maindata.dataset.date;
     let no:string = maindata.dataset.no;
     window.location.href="/writeDiary?date="+date+"&no="+no;
+});
+
+deleteBtn.addEventListener('click', ()=>{
+    let date:string = maindata.dataset.date;
+    let no:string = maindata.dataset.no;
+    window.location.href="/delete?date="+date+"&no="+no;
+});
+
+diaryList.addEventListener('click', (event)=>{
+    let target:HTMLElement = event.target as HTMLElement;
+    if(!target.classList.contains('delete-diary')) return;
+    let date:string = target.parentElement.dataset.date;
+    let no:string = target.parentElement.dataset.no;
+    window.location.href="/delete?date="+date+"&no="+no;
 });

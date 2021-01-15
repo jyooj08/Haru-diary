@@ -52,6 +52,30 @@ app.get('/writeDiary', (request, response)=> {
     });
 });
 
+app.get('/delete', (request, response)=>{
+    console.log(request.query);
+    connection.query(`delete from diary where date='${request.query.date}' and no=${request.query.no}`, function(error, results, fields){
+        if(error) {
+            response.status(404);
+            return;
+        }
+        response.redirect('/?date='+request.query.date);      
+    });
+});
+
+app.get('/save', (request, response)=>{
+    console.log(request.query);
+    let query = `insert into diary values (${request.query.no}, '${request.query.date}', '${request.query.title}', '${request.query.content}') 
+    on duplicate key update title = '${request.query.title}', content='${request.query.content}'`;
+    connection.query(query, function(error, results, fields){
+        if(error) {
+            response.status(404);
+            return;
+        }
+        response.redirect('/?date='+request.query.date);
+    });
+});
+
 app.listen(50000, () => {
     console.log('Server running in 50000 port');
 });

@@ -35,10 +35,10 @@
                 <!-- </a> -->
                 <span>New Diary</span>
                 <ul class="diarys">
-                    <% diarys.forEach(function(diary, index){ %>
-                        <li class="diary <%=index%>">
+                    <% diarys.forEach(function(diary){ %>
+                        <li class="diary" data-date="<%=diary.date%>" data-no="<%=diary.no%>">
                             <a class="diary--title" href="/?date=<%=diary.date%>&idx=<%=diary.no%>"><%= diary.title %></a>
-                            <button class="delete-diary"><i class="fas fa-trash-alt"></i></button>
+                            <i class="fas fa-trash-alt delete-diary"></i>
                         </li>
                     <% })%>
                 </ul>
@@ -49,7 +49,7 @@
             <% if(diarys.length == 0) { %>
                 <h1>작성된 일기가 없습니다.</h1>
             <% } else {%>
-            <div class="main--data" data-date="<%=diarys[idx].date%>" data-no="<%=idx%>">
+            <div class="main--data" data-date="<%=diarys[idx].date%>" data-no="<%=diarys[idx].no%>">
                 <h1><%= diarys[idx].title %></h1>
                 <div class="main btns">
                     <button class="btn--edit">수정</button>

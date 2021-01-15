@@ -8,6 +8,10 @@ var toLastMonth = document.querySelector('.moveto.lastmonth');
 var toNextMonth = document.querySelector('.moveto.nextmonth');
 var addDiaryBtn = document.querySelector('.add-diary');
 var editBtn = document.querySelector('.btn--edit');
+var deleteBtn = document.querySelector('.btn--delete');
+var saveBtn = document.querySelector('.btn--save');
+var maindata = document.querySelector('.main--data');
+var diaryList = document.querySelector('.diarys');
 var query = window.location.search.substring(1).split('&');
 var data = [];
 query.forEach(function (item) {
@@ -86,8 +90,20 @@ addDiaryBtn.addEventListener('click', function () {
     window.location.href = "/writeDiary?date=" + date + "&no=" + no;
 });
 editBtn.addEventListener('click', function () {
-    var maindata = document.querySelector('.main--data');
     var date = maindata.dataset.date;
     var no = maindata.dataset.no;
     window.location.href = "/writeDiary?date=" + date + "&no=" + no;
+});
+deleteBtn.addEventListener('click', function () {
+    var date = maindata.dataset.date;
+    var no = maindata.dataset.no;
+    window.location.href = "/delete?date=" + date + "&no=" + no;
+});
+diaryList.addEventListener('click', function (event) {
+    var target = event.target;
+    if (!target.classList.contains('delete-diary'))
+        return;
+    var date = target.parentElement.dataset.date;
+    var no = target.parentElement.dataset.no;
+    window.location.href = "/delete?date=" + date + "&no=" + no;
 });
