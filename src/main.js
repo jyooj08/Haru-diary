@@ -87,6 +87,9 @@ table.addEventListener('click', function (event) {
 addDiaryBtn.addEventListener('click', function () {
     var date = document.querySelector('.date td.today').id.substring(4);
     var no = document.querySelectorAll('.diarys li').length;
+    if (no !== 0) {
+        no = Number(document.querySelectorAll('.diarys li')[no - 1].dataset.no) + 1;
+    }
     window.location.href = "/writeDiary?date=" + date + "&no=" + no;
 });
 editBtn.addEventListener('click', function () {

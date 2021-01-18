@@ -93,6 +93,9 @@ table.addEventListener('click', (event)=>{
 addDiaryBtn.addEventListener('click', ()=>{
     let date:string = document.querySelector('.date td.today').id.substring(4);
     let no: number = document.querySelectorAll('.diarys li').length;
+    if(no !== 0){
+        no = Number((document.querySelectorAll('.diarys li')[no-1] as HTMLElement).dataset.no) + 1;
+    }
     window.location.href="/writeDiary?date="+date+"&no="+no;
 });
 
