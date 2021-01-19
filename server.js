@@ -16,7 +16,8 @@ connection.connect();
 
 app.get('/', (request, response) => {
     let date = request.query.date;
-    let idx = Number(request.query.idx) || 0;
+    let no = Number(request.query.no) || 0;
+    let diarys, main_diary;
     if(!date){
         let today = new Date();
         let month = Number(today.getMonth()) + 1;
@@ -27,9 +28,14 @@ app.get('/', (request, response) => {
 
     connection.query(`select * from diary where date='${date}'`, function(error, results, fields){
         if(error) console.log('ERROR', error);
-        // console.log(results);
+        diarys = results;
+        connection.query(`select * from diary where date='${date}' and no = ${no}`, function(error, results, fields){
+            if(error) console.log('ERROR', error);
+            main_diary = results[0] || diarys[0] || null;
+        });
         fs.readFile(path.normalize(__dirname+'/html/index.ejs'), 'utf8', function(error, data){
-            response.send(ejs.render(data, {diarys: results, idx: idx}));
+            response.send(ejs.render(data, {Diarys: diarys, MainDiary: main_diary}));
+            console.log('main diary',main_diary);
         });
     });
     

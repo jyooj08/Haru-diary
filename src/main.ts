@@ -106,6 +106,8 @@ editBtn.addEventListener('click', ()=>{
 });
 
 deleteBtn.addEventListener('click', ()=>{
+    let answer:boolean = confirm('삭제하시겠습니까?');
+    if(!answer) return;
     let date:string = maindata.dataset.date;
     let no:string = maindata.dataset.no;
     window.location.href="/delete?date="+date+"&no="+no;
@@ -114,6 +116,8 @@ deleteBtn.addEventListener('click', ()=>{
 diaryList.addEventListener('click', (event)=>{
     let target:HTMLElement = event.target as HTMLElement;
     if(!target.classList.contains('delete-diary')) return;
+    let answer:boolean = confirm('삭제하시겠습니까?');
+    if(!answer) return;
     let date:string = target.parentElement.dataset.date;
     let no:string = target.parentElement.dataset.no;
     window.location.href="/delete?date="+date+"&no="+no;

@@ -12,12 +12,16 @@ query.forEach(item => {
 });
 
 deleteBtn.addEventListener('click', ()=>{
+    let answer = confirm('삭제하시겠습니까?');
+    if(!answer) return;
     let date:string = data['date'];
     let no:string = data['no'];
     window.location.href="/delete?date="+date+"&no="+no;
 });
 
 saveBtn.addEventListener('click', ()=>{
+    let answer:boolean = confirm('저장하시겠습니까?');
+    if(!answer) return;
     let title:string = (document.querySelector('.input--title') as HTMLInputElement).value;
     let content:string = (document.querySelector('.content') as HTMLInputElement).value;
     window.location.href=`/save?date=${data['date']}&no=${data['no']}&title=${title}&content=${content}`;
