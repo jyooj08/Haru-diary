@@ -1,6 +1,4 @@
 var today = new Date();
-var year = today.getFullYear();
-var month = today.getMonth() + 1;
 var yearSpan = document.querySelector('.year');
 var monthSpan = document.querySelector('.month');
 var table = document.querySelector('.date');
@@ -17,6 +15,8 @@ var data = [];
 query.forEach(function (item) {
     data[item.split('=')[0]] = item.split('=')[1];
 });
+var year = Number(data['date'].split('-')[0]) || today.getFullYear();
+var month = Number(data['date'].split('-')[1]) || today.getMonth() + 1;
 setCalendar(year, month);
 function setCalendar(year, month) {
     yearSpan.textContent = String(year) + "년";

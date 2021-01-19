@@ -1,7 +1,4 @@
 let today = new Date();
-let year:number = today.getFullYear();
-let month:number = today.getMonth() + 1;
-
 let yearSpan = document.querySelector('.year');
 let monthSpan = document.querySelector('.month');
 let table = document.querySelector('.date');
@@ -19,6 +16,8 @@ let data: Array<string> = [];
 query.forEach(item => {
     data[item.split('=')[0]] = item.split('=')[1];
 });
+let year:number = Number(data['date'].split('-')[0]) || today.getFullYear();
+let month:number = Number(data['date'].split('-')[1]) || today.getMonth() + 1;
 
 setCalendar(year, month);
 
