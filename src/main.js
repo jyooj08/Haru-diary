@@ -15,8 +15,8 @@ var data = [];
 query.forEach(function (item) {
     data[item.split('=')[0]] = item.split('=')[1];
 });
-var year = Number(data['date'].split('-')[0]) || today.getFullYear();
-var month = Number(data['date'].split('-')[1]) || today.getMonth() + 1;
+var year = Number(data['date'] && data['date'].split('-')[0]) || today.getFullYear();
+var month = Number(data['date'] && data['date'].split('-')[1]) || today.getMonth() + 1;
 setCalendar(year, month);
 function setCalendar(year, month) {
     yearSpan.textContent = String(year) + "년";
@@ -85,19 +85,19 @@ table.addEventListener('click', function (event) {
     window.location.href = "/?date=" + date;
 });
 addDiaryBtn.addEventListener('click', function () {
-    var date = document.querySelector('.date td.today').id.substring(4);
+    var date = data['date'] || year + '-' + month + '-' + today.getDate();
     var no = document.querySelectorAll('.diarys li').length;
     if (no !== 0) {
         no = Number(document.querySelectorAll('.diarys li')[no - 1].dataset.no) + 1;
     }
     window.location.href = "/writeDiary?date=" + date + "&no=" + no;
 });
-editBtn.addEventListener('click', function () {
+editBtn && editBtn.addEventListener('click', function () {
     var date = maindata.dataset.date;
     var no = maindata.dataset.no;
     window.location.href = "/writeDiary?date=" + date + "&no=" + no;
 });
-deleteBtn.addEventListener('click', function () {
+deleteBtn && deleteBtn.addEventListener('click', function () {
     var answer = confirm('삭제하시겠습니까?');
     if (!answer)
         return;

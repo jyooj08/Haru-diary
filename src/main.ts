@@ -16,8 +16,8 @@ let data: Array<string> = [];
 query.forEach(item => {
     data[item.split('=')[0]] = item.split('=')[1];
 });
-let year:number = Number(data['date'].split('-')[0]) || today.getFullYear();
-let month:number = Number(data['date'].split('-')[1]) || today.getMonth() + 1;
+let year:number = Number(data['date'] && data['date'].split('-')[0]) || today.getFullYear();
+let month:number = Number(data['date'] && data['date'].split('-')[1]) || today.getMonth() + 1;
 
 setCalendar(year, month);
 
@@ -62,8 +62,6 @@ function setCalendar(year: number, month: number): void{
     if(todayDate) todayDate.classList.add('today');
     let nowDate: HTMLElement = document.querySelector('#date'+data['date']);
     if(nowDate) nowDate.classList.add('now');
-    
-    
 }
 
 toLastMonth.addEventListener('click', ()=>{
@@ -90,7 +88,7 @@ table.addEventListener('click', (event)=>{
 });
 
 addDiaryBtn.addEventListener('click', ()=>{
-    let date:string = document.querySelector('.date td.today').id.substring(4);
+    let date:string = data['date'] || year+'-'+month+'-'+today.getDate();
     let no: number = document.querySelectorAll('.diarys li').length;
     if(no !== 0){
         no = Number((document.querySelectorAll('.diarys li')[no-1] as HTMLElement).dataset.no) + 1;
@@ -98,13 +96,13 @@ addDiaryBtn.addEventListener('click', ()=>{
     window.location.href="/writeDiary?date="+date+"&no="+no;
 });
 
-editBtn.addEventListener('click', ()=>{
+editBtn && editBtn.addEventListener('click', ()=>{
     let date:string = maindata.dataset.date;
     let no:string = maindata.dataset.no;
     window.location.href="/writeDiary?date="+date+"&no="+no;
 });
 
-deleteBtn.addEventListener('click', ()=>{
+deleteBtn && deleteBtn.addEventListener('click', ()=>{
     let answer:boolean = confirm('삭제하시겠습니까?');
     if(!answer) return;
     let date:string = maindata.dataset.date;
