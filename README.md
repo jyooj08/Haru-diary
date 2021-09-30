@@ -1,6 +1,6 @@
-# Daily_diary
+## About The Project
 
-This is a website where you can write a diary by date using HTML, CSS, TypeScript, Node.js, and MYSQL.
+날짜 별로 일기를 여러 개 작성할 수 있는 웹사이트입니다.
 
 Main page
 
@@ -13,6 +13,13 @@ WriteDiary page
 'Diary' table in MYSQL
 
 ![image](https://user-images.githubusercontent.com/38034994/105354688-41631780-5c34-11eb-8584-8be1f7ec11c8.png)
+
+## Built With
+* HTML
+* CSS
+* TypeScript
+* Node.js
+* MYSQL
 
 ## How to Run
 1. Install Node.js and install express, ejs, mysql modules.
