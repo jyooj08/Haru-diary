@@ -2,15 +2,15 @@
 
 날짜 별로 일기를 여러 개 작성할 수 있는 웹사이트입니다.
 
-Main page
+### Main page
 
-![3](https://user-images.githubusercontent.com/38034994/105354321-bda92b00-5c33-11eb-9f8b-f20ab43949ad.JPG)
+![그림1](https://user-images.githubusercontent.com/38034994/137764303-ed3f91e2-cb23-4dcc-8a3b-c0052b0086be.jpg)
 
-WriteDiary page
+### WriteDiary page
 
-![2](https://user-images.githubusercontent.com/38034994/105354368-cdc10a80-5c33-11eb-8356-72e11e081f09.JPG)
+![그림2](https://user-images.githubusercontent.com/38034994/137764332-e2388051-3e2a-491e-a270-301b07659aa0.jpg)
 
-'Diary' table in MYSQL
+### 'Diary' table in MYSQL
 
 ![image](https://user-images.githubusercontent.com/38034994/105354688-41631780-5c34-11eb-8584-8be1f7ec11c8.png)
 
