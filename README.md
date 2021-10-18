@@ -22,6 +22,17 @@ WriteDiary page
 * MYSQL
 
 ## How to Run
-1. Install Node.js and install express, ejs, mysql modules.
-2. Install MYSQL and create DailyDiary database in root account and create Diary table.
-3. Run server.js and connect to localhost:50000.
+1. Node.js 설치
+https://nodejs.org/en/download/current/
+
+2. express, ejs, mysql 모듈 설치
+
+  npm install express
+  npm install ejs
+  npm install mysql
+  
+3. server.js 실행
+
+  node server.js
+  
+4. 브라우저를 통해 localhost:50000에 접속
