@@ -26,13 +26,13 @@ WriteDiary page
 https://nodejs.org/en/download/current/
 
 2. express, ejs, mysql 모듈 설치
-
-  npm install express
-  npm install ejs
-  npm install mysql
-  
+```
+npm install express
+npm install ejs
+npm install mysql
+```  
 3. server.js 실행
-
-  node server.js
-  
+```
+node server.js
+```
 4. 브라우저를 통해 localhost:50000에 접속
