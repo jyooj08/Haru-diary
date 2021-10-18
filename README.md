@@ -23,6 +23,7 @@ WriteDiary page
 
 ## How to Run
 1. Node.js 설치
+
 https://nodejs.org/en/download/current/
 
 2. express, ejs, mysql 모듈 설치
